@@ -38,6 +38,14 @@ public class UserController {
         }
     }
 
+    @PostMapping(value = "/logout")
+    public Result userLogout(HttpServletResponse response){
+        Cookie cookie = new Cookie("token", "");
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        return ResultUtil.success(null);
+    }
+
     @PostMapping(value = "/getall")
     public Result getAllUser(){
         return ResultUtil.success(userService.getAllUser());
