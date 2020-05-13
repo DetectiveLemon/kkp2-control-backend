@@ -16,6 +16,6 @@ public interface ModelMapper {
 
     @Select("select * from model where model_status = 1")
     List<Model> getNotDisployModel();
-    @Select("select * from model where model_id=#{id}")
+    @Select("select * from model_detail where model_id=#{id}")
     Model getModelDetail(int id);
 }
