@@ -37,4 +37,14 @@ public class Model {
     public void setModel_status(int model_status) {
         this.model_status = model_status;
     }
+
+    @Override
+    public String toString() {
+        return "Model{" +
+                "model_id=" + model_id +
+                ", model_name='" + model_name + '\'' +
+                ", model_desc='" + model_desc + '\'' +
+                ", model_status=" + model_status +
+                '}';
+    }
 }

@@ -27,6 +27,7 @@ public class UserController {
             User user = userService.checkLogin(user_name, password);
             if (user!=null){
                 Cookie cookie = new Cookie("token", TokenUtil.getToken(user));
+                cookie.setPath("/");
                 response.addCookie(cookie);
                 return ResultUtil.success(user);
             }
