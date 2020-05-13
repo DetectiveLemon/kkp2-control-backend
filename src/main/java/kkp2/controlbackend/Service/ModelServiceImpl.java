@@ -1,6 +1,7 @@
 package kkp2.controlbackend.Service;
 
 import kkp2.controlbackend.Bean.Model;
+import kkp2.controlbackend.Bean.ModelDetail;
 import kkp2.controlbackend.Mapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class ModelServiceImpl implements ModelService {
     }
 
     @Override
-    public Model getModelDetail(int id) {
+    public ModelDetail getModelDetail(int id) {
         return modelMapper.getModelDetail(id);
     }
 

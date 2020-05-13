@@ -1,5 +1,6 @@
 package kkp2.controlbackend.Controller;
 
+import kkp2.controlbackend.Bean.ModelDetail;
 import kkp2.controlbackend.Bean.Result;
 import kkp2.controlbackend.Service.ModelServiceImpl;
 import kkp2.controlbackend.Util.ResultUtil;
@@ -32,7 +33,7 @@ public class ModelController {
         return ResultUtil.success(res);
     }
 
-    @PostMapping("/getdesploymodel")
+    @PostMapping("/getdisploymodel")
     public Result getDesployModel(){
         List<Model> res = new ArrayList<>();
         try {
@@ -44,7 +45,7 @@ public class ModelController {
         return ResultUtil.success(res);
     }
 
-    @PostMapping("/getundesploymodel")
+    @PostMapping("/getundisploymodel")
     public Result getUndisployModel(){
         List<Model> res = new ArrayList<>();
         try {
@@ -58,7 +59,7 @@ public class ModelController {
 
     @PostMapping("/getmodeldetail")
     public Result getModelDetail(@RequestParam int id){
-        Model res = new Model();
+        ModelDetail res;
         try {
             res = modelServiceImpl.getModelDetail(id);
         }catch (Exception e){
