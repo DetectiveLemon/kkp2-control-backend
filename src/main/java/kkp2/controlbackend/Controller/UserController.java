@@ -12,6 +12,7 @@ import kkp2.controlbackend.Util.ResultUtil;
 import kkp2.controlbackend.Util.TokenUtil;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
@@ -46,6 +47,17 @@ public class UserController {
         cookie.setMaxAge(0);
         response.addCookie(cookie);
         return ResultUtil.success(null);
+    }
+
+    @PostMapping(value = "/get")
+    public Result get(HttpServletRequest request){
+        try {
+            User user = userService.getUserByToken(request);
+            return ResultUtil.success(user);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultUtil.error(-1, e.getMessage());
+        }
     }
 
     @PostMapping(value = "/getall")
