@@ -42,6 +42,7 @@ public class UserController {
     @PostMapping(value = "/logout")
     public Result userLogout(HttpServletResponse response){
         Cookie cookie = new Cookie("token", "");
+        cookie.setPath("/");
         cookie.setMaxAge(0);
         response.addCookie(cookie);
         return ResultUtil.success(null);

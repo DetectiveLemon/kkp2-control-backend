@@ -20,7 +20,6 @@ public class TokenAuthInterceptor implements HandlerInterceptor {
         Cookie[] cookies = request.getCookies();
         String token = null;
         //获取token
-        System.out.println(request.getCookies());
         if (cookies != null){
             for(Cookie cookie : cookies){
                 if (cookie.getName().equals("token")){
