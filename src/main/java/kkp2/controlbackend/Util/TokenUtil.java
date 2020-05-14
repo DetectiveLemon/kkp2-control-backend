@@ -44,7 +44,18 @@ public class TokenUtil {
             return false;
         }
     }
-
+    public static int getUser_Id(String token){
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT jwt = verifier.verify(token);
+            Map<String, Claim> Claims  = jwt.getClaims();
+            return Claims.get("user_id").asInt();
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+    }
     public static void main(String[] args) {
 //        TokenUtil test = new TokenUtil();
 //        String token = test.getToken(1, "admin", 0);

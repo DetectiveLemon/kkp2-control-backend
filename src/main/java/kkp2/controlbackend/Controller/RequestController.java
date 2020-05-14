@@ -21,10 +21,8 @@ public class RequestController {
     RequestService requestService;
     @RequestMapping
     public void pass(@RequestParam int request_id, HttpServletRequest request){
-        Cookie[] cookies = request.getCookies();
-        int user_id = -3;
         Request req = requestService.getRequestInfoById(request_id);
-        User user = userService.getUserById(1);
+        User user = userService.getUserByToken(request);
         if(user.getUser_type() == 0){
             requestService.adminpass(request_id);
         }
