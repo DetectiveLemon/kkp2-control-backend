@@ -3,10 +3,12 @@ package kkp2.controlbackend.Service;
 import kkp2.controlbackend.Bean.Request;
 import kkp2.controlbackend.Mapper.RequestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.List;
 
+@Service
 public class RequestServiceImpl implements  RequestService {
     @Autowired
     RequestMapper requestMapper;

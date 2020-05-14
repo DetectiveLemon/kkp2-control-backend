@@ -37,7 +37,6 @@ public class TokenUtil {
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT jwt = verifier.verify(token);
             Map<String, Claim> Claims  = jwt.getClaims();
-            System.out.println(jwt.getClaim("username").asString());
             return true;
         }catch (Exception e){
             e.printStackTrace();
