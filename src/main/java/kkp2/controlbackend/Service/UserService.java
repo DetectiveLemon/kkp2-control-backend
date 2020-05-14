@@ -8,5 +8,5 @@ public interface UserService {
     User checkLogin(String user_name, String password);
 
     List<User> getAllUser();
-
+    User getUserById(int user_id);
 }

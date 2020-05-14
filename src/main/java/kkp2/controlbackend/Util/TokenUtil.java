@@ -6,8 +6,11 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import kkp2.controlbackend.Bean.User;
+import kkp2.controlbackend.Service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TokenUtil {

@@ -1,87 +1,80 @@
 package kkp2.controlbackend.Bean;
 
 
+import java.sql.Timestamp;
+
 public class Request {
 
-    private int requestId;
-    private int requestModel;
-    private String requestCompany;
-    private java.sql.Timestamp requestTime;
-    private int requestData;
-    private java.sql.Timestamp govTime;
-    private java.sql.Timestamp adminTime;
-    private int requestStatus;
+    private int request_id;
+    private int request_Model_id;
+    private String request_company;
+    private java.sql.Timestamp request_time;
+    private int request_data;
+    private java.sql.Timestamp gov_time;
+    private java.sql.Timestamp admin_time;
+    private int request_status;
 
-
-    public int getRequestId() {
-        return requestId;
+    public int getRequest_id() {
+        return request_id;
     }
 
-    public void setRequestId(int requestId) {
-        this.requestId = requestId;
+    public void setRequest_id(int request_id) {
+        this.request_id = request_id;
     }
 
-
-    public int getRequestModel() {
-        return requestModel;
+    public int getRequest_Model_id() {
+        return request_Model_id;
     }
 
-    public void setRequestModel(int requestModel) {
-        this.requestModel = requestModel;
+    public void setRequest_Model_id(int request_Model_id) {
+        this.request_Model_id = request_Model_id;
     }
 
-
-    public String getRequestCompany() {
-        return requestCompany;
+    public String getRequest_company() {
+        return request_company;
     }
 
-    public void setRequestCompany(String requestCompany) {
-        this.requestCompany = requestCompany;
+    public void setRequest_company(String request_company) {
+        this.request_company = request_company;
     }
 
-
-    public java.sql.Timestamp getRequestTime() {
-        return requestTime;
+    public Timestamp getRequest_time() {
+        return request_time;
     }
 
-    public void setRequestTime(java.sql.Timestamp requestTime) {
-        this.requestTime = requestTime;
+    public void setRequest_time(Timestamp request_time) {
+        this.request_time = request_time;
     }
 
-
-    public int getRequestData() {
-        return requestData;
+    public int getRequest_data() {
+        return request_data;
     }
 
-    public void setRequestData(int requestData) {
-        this.requestData = requestData;
+    public void setRequest_data(int request_data) {
+        this.request_data = request_data;
     }
 
-
-    public java.sql.Timestamp getGovTime() {
-        return govTime;
+    public Timestamp getGov_time() {
+        return gov_time;
     }
 
-    public void setGovTime(java.sql.Timestamp govTime) {
-        this.govTime = govTime;
+    public void setGov_time(Timestamp gov_time) {
+        this.gov_time = gov_time;
     }
 
-
-    public java.sql.Timestamp getAdminTime() {
-        return adminTime;
+    public Timestamp getAdmin_time() {
+        return admin_time;
     }
 
-    public void setAdminTime(java.sql.Timestamp adminTime) {
-        this.adminTime = adminTime;
+    public void setAdmin_time(Timestamp admin_time) {
+        this.admin_time = admin_time;
     }
 
-
-    public int getRequestStatus() {
-        return requestStatus;
+    public int getRequest_status() {
+        return request_status;
     }
 
-    public void setRequestStatus(int requestStatus) {
-        this.requestStatus = requestStatus;
+    public void setRequest_status(int request_status) {
+        this.request_status = request_status;
     }
-
 }
