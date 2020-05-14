@@ -6,11 +6,15 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import kkp2.controlbackend.Bean.User;
+import kkp2.controlbackend.Mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TokenUtil {
+
     private static final String TOKEN_SECRET = "DETECTIVELEONTESTJWT";
 
     public static String getToken(User user){
@@ -31,13 +35,24 @@ public class TokenUtil {
         return token;
     }
 
-    public static boolean veryify(String token){
+    public static int getUser_Id(String token){
         try {
             Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT jwt = verifier.verify(token);
             Map<String, Claim> Claims  = jwt.getClaims();
-            System.out.println(jwt.getClaim("username").asString());
+            return Claims.get("user_id").asInt();
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    public static boolean veryify(String token){
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT jwt = verifier.verify(token);
             return true;
         }catch (Exception e){
             e.printStackTrace();

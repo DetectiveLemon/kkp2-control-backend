@@ -1,10 +1,13 @@
 package kkp2.controlbackend.Service;
 
+import kkp2.controlbackend.Util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kkp2.controlbackend.Bean.User;
 import kkp2.controlbackend.Mapper.UserMapper;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
@@ -26,5 +29,20 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<User> getAllUser() {
         return userMapper.getAllUser();
+    }
+
+    @Override
+    public User getUserByToken(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        String token = null;
+        //获取token
+        if (cookies != null){
+            for(Cookie cookie : cookies){
+                if (cookie.getName().equals("token")){
+                    token = cookie.getValue();
+                }
+            }
+        }
+        return userMapper.getUserById(TokenUtil.getUser_Id(token));
     }
 }
