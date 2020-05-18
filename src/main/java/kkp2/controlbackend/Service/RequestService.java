@@ -14,7 +14,7 @@ public interface RequestService {
     int lcpass(int request_id);
     int lcreject(int request_id);
     int usercancel(int request_id);
-    int inserttask(int request_id,String name,String desc,int model_id,int total);
+    int inserttask(int request_id,int model_id,int total);
     List<Request> getAllRequest();
     List<Request> getNeedByAdminRequest();
     List<Request> getNeedByLcRequest();

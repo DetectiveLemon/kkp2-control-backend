@@ -26,16 +26,20 @@ public class RequestController {
 
 
     @PostMapping(value = "/pass")
-    public Result pass(@RequestParam int request_id,@RequestParam String task_name,@RequestParam String task_desc,HttpServletRequest request) {
+    public Result pass(@RequestParam int request_id,HttpServletRequest request) {
         try {
             Request req = requestService.getRequestInfoById(request_id);
             User user = userService.getUserByToken(request);
             if (user.getUser_type() == 0 && req.getRequest_status() == 0) {
                 requestService.adminpass(request_id);
-            } else if (user.getUser_type() == 1 && req.getRequest_status() == 1) {
+            } else if(user.getUser_type() == 1 && req.getRequest_status() == 1){
                 requestService.lcpass(request_id);
-                requestService.inserttask(req.getRequest_id(),task_name,task_desc,req.getRequest_Model_id(),req.getRequest_data());
-            } else if (user.getUser_type() == 0 && req.getRequest_status() == 1) {
+                System.out.println(req.getRequest_id());
+                System.out.println(req.getRequest_Model());
+                System.out.println(req.getRequest_data());
+                requestService.inserttask(req.getRequest_id(),req.getRequest_Model(),req.getRequest_data());
+            }
+            else if (user.getUser_type() == 0 && req.getRequest_status() == 1) {
                 return ResultUtil.error(500, "政府已通过");
             } else if(req.getRequest_status() == 2){
                 return ResultUtil.error(500, "请求已通过");

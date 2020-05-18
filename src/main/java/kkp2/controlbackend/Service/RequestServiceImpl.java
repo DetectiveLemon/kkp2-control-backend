@@ -42,8 +42,8 @@ public class RequestServiceImpl implements  RequestService {
     }
 
     @Override
-    public int inserttask(int request_id, String name, String desc, int model_id, int total) {
-        return requestMapper.inserttask(request_id, name, desc, model_id, total);
+    public int inserttask(int request_id, int model_id, int total) {
+        return requestMapper.inserttask(request_id,model_id, total);
     }
 
     @Override

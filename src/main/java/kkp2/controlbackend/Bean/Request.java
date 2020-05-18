@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 public class Request {
 
     private int request_id;
-    private int request_Model_id;
+    private int request_Model;
     private String request_company;
     private java.sql.Timestamp request_time;
     private int request_data;
@@ -22,12 +22,13 @@ public class Request {
         this.request_id = request_id;
     }
 
-    public int getRequest_Model_id() {
-        return request_Model_id;
+
+    public int getRequest_Model() {
+        return request_Model;
     }
 
-    public void setRequest_Model_id(int request_Model_id) {
-        this.request_Model_id = request_Model_id;
+    public void setRequest_Model(int request_Model) {
+        this.request_Model = request_Model;
     }
 
     public String getRequest_company() {
