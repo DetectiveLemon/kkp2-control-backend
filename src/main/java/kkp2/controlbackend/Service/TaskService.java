@@ -19,6 +19,10 @@ public class TaskService {
     private List<Task> allTasks;
     private Random random = new Random();
 
+    public List<Task> getAllTasks(){
+        return allTasks;
+    }
+
     public Calc getCalcTask(){
         Calc r ;
         try {

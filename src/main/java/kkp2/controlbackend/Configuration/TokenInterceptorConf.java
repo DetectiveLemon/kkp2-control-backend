@@ -20,7 +20,7 @@ public class TokenInterceptorConf implements WebMvcConfigurer {
                 //SpringBoot已经做好了静态资源映射
                 registry.addInterceptor(new TokenAuthInterceptor())
                         .addPathPatterns("/**")
-                        .excludePathPatterns("/user/login", "/user/logout", "/task/*");
+                        .excludePathPatterns("/user/login", "/user/logout", "/task/getcalc", "/node/heartbeat");
 //                        .excludePathPatterns("/index.html","/","/user/login","/static/**","/webjars/**");
                 // /**  表示拦截所有路径下的所有请求
             }
