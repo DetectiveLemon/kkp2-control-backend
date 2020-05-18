@@ -81,7 +81,7 @@ public class RequestController {
         Request req = requestService.getRequestInfoById(request_id);
         User user = userService.getUserByToken(request);
         try {
-            if (user.getUser_type() == 2 && req.getRequest_status() != 2) {
+            if (user.getUser_type() == 2 && (req.getRequest_status() == 0 || req.getRequest_status() == 1)) {
                 requestService.usercancel(request_id);
             } else{
                 return ResultUtil.error(-1,"请求已通过");
