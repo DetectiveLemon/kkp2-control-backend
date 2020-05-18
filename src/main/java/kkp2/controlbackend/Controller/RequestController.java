@@ -78,10 +78,10 @@ public class RequestController {
 
     @PostMapping("/cancel")
     public Result cancel(@RequestParam int request_id, HttpServletRequest request){
+        Request req = requestService.getRequestInfoById(request_id);
+        User user = userService.getUserByToken(request);
         try {
-            Request req = requestService.getRequestInfoById(request_id);
-            User user = userService.getUserByToken(request);
-            if (user.getUser_type() == 2 && req.getRequest_status() != 2 && req.getRequest_company().equals(user.getUser_name()) ) {
+            if (user.getUser_type() == 2 && req.getRequest_status() != 2) {
                 requestService.usercancel(request_id);
             } else{
                 return ResultUtil.error(-1,"请求已通过");
@@ -90,7 +90,7 @@ public class RequestController {
             e.printStackTrace();
             return ResultUtil.error(-1, e.getMessage());
         }
-        return ResultUtil.success(null);
+        return ResultUtil.success(req);
     }
 
 
