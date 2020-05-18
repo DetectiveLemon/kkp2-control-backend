@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.List;
 
-@Service
 public interface RequestService {
     int adminpass(int request_id);
     int adminreject(int request_id);
