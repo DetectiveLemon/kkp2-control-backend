@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @RestController
-@RequestMapping("/request")
+@RequestMapping(value = "/request",produces = { "application/json;charset=UTF-8"})
 public class RequestController {
     @Autowired
     UserService userService;
@@ -25,7 +25,7 @@ public class RequestController {
     RequestService requestService;
 
 
-    @PostMapping("/pass")
+    @PostMapping(value = "/pass")
     public Result pass(@RequestParam int request_id, HttpServletRequest request) {
         try {
             Request req = requestService.getRequestInfoById(request_id);
@@ -35,9 +35,11 @@ public class RequestController {
             } else if (user.getUser_type() == 1 && req.getRequest_status() == 1) {
                 requestService.lcpass(request_id);
             } else if (user.getUser_type() == 0 && req.getRequest_status() == 1) {
-                return ResultUtil.error(-1, "政府已通过");
+                return ResultUtil.error(500, "政府已通过");
+            } else if(req.getRequest_status() == 2){
+                return ResultUtil.error(500, "请求已通过");
             } else {
-                return ResultUtil.error(-1, "等待政府通过");
+                return ResultUtil.error(500, "等待政府通过");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,11 +58,14 @@ public class RequestController {
             } else if (user.getUser_type() == 1 && req.getRequest_status() == 1) {
                 requestService.lcreject(request_id);
             } else if (user.getUser_type() == 0 && req.getRequest_status() == 1) {
-                return ResultUtil.error(-1, "政府已通过");
+                return ResultUtil.error(500, "政府已通过");
             } else if(user.getUser_type() == 1 && req.getRequest_status() == 0){
-                return ResultUtil.error(-1, "等待政府通过");
-            } else{
-                return ResultUtil.error(-1,"用户已取消");
+                return ResultUtil.error(500, "等待政府通过");
+            } else if(req.getRequest_status() == 2){
+                return ResultUtil.error(500, "请求已通过");
+            }
+            else{
+                return ResultUtil.error(500,"用户已取消");
             }
         }catch (Exception e){
             e.printStackTrace();
