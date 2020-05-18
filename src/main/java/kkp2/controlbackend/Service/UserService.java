@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface UserService {
     User checkLogin(String user_name, String password);
-
     List<User> getAllUser();
-
     User getUserByToken(HttpServletRequest request);
 }

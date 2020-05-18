@@ -1,6 +1,7 @@
 package kkp2.controlbackend.Mapper;
 
 import kkp2.controlbackend.Bean.Request;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -28,6 +29,9 @@ public interface RequestMapper {
 
     @Update("update request set request_status = -3 where request_id = #{request_id}")
     int usercancel(int request_id);
+
+    @Insert("insert into task(task_name,task_desc,model_id,`status`,current,total,mongo_url,database_name,source_collection,result_collection) values(#{name},#{desc},#{model_id},0,0,#{total},'mongodb://127.0.0.1:27017','test','raw_data','out_data')")
+    int inserttask(int request_id,String name,String desc,int model_id,int total);
 
     @Select("select * from request")
     List<Request> getAllRequest();
