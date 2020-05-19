@@ -11,32 +11,29 @@ public class NodeService {
     private Map<String, Integer> operationMap = new HashMap<>();
 
     public int handleHeartBeat(Node node){
-        //取操作码 如果没有表示 节点第一次请求 则不改变节点状态
-//        int operation = operationMap.getOrDefault(node.getUuid(), node.getNode_status());
-        int operation;
+        int operation = node.getNode_status();
         Date date = new Date();
-        if (operationMap.get(node.getUuid())==null){
+        if (nodeMap.get(node.getUuid())==null){//节点首次上线
             node.setOnline_time(date);
-            operation = node.getNode_status();
-        }
-        else {
-            operation = operationMap.get(node.getUuid());
+        }else {//非首次
+            if(operationMap.get(node.getUuid())!=null){//需要对节点状态进行改变
+                operation = operationMap.get(node.getUuid());
+                operationMap.put(node.getUuid(), null);//从map中清除操作码
+            }
             node.setOnline_time(nodeMap.get(node.getUuid()).getOnline_time());//保持上线时间不变
         }
+
         //设置心跳时间
         node.setValidate_time(date);
         //设置操作码
         node.setNode_status(operation);
-        //放入两个Map中
+        //放入Map中
         nodeMap.put(node.getUuid(), node);
-        operationMap.put(node.getUuid(), operation);
         //返回操作码
         return operation;
     }
 
     public Integer setOperation(String uuid, int operation){
-        if (operationMap.get(uuid)==null)
-            return null;
         operationMap.put(uuid, operation);
         return operation;
     }
