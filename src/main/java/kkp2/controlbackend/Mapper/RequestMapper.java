@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper
 public interface RequestMapper {
 
-    @Update("update request set request_status = 1,admin_time=now() where request_id = #{request_id}")
+    @Update("update request set request_status = 1,gov_time=now() where request_id = #{request_id}")
     int adminpass(int request_id);
 
     @Update("update request set request_status = -1 where request_id = #{request_id}")
@@ -21,7 +21,7 @@ public interface RequestMapper {
     @Select("select * from request where request_id = #{request_id} ")
     Request getRequestInfoById(int request_id);
 
-    @Update("update request set request_status = 2,gov_time = now() where request_id = #{request_id}")
+    @Update("update request set request_status = 2,admin_time = now() where request_id = #{request_id}")
     int lcpass(int request_id);
 
     @Update("update request set request_status = -2 where request_id = #{request_id}")

@@ -34,7 +34,7 @@ public class RequestController {
                 requestService.adminpass(request_id);
             } else if(user.getUser_type() == 1 && req.getRequest_status() == 1){
                 requestService.lcpass(request_id);
-                requestService.inserttask(req.getRequest_id(),req.getRequest_Model(),req.getRequest_data());
+                requestService.inserttask(req.getRequest_id(),req.getRequest_model(),req.getRequest_data());
             }
             else if (user.getUser_type() == 0 && req.getRequest_status() == 1) {
                 return ResultUtil.error(500, "政府已通过");
