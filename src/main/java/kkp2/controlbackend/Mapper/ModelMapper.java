@@ -1,11 +1,13 @@
 package kkp2.controlbackend.Mapper;
 
+import kkp2.controlbackend.Bean.Log;
 import kkp2.controlbackend.Bean.Model;
 import kkp2.controlbackend.Bean.ModelDetail;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface ModelMapper {
@@ -21,4 +23,9 @@ public interface ModelMapper {
 
     @Select("select * from model_detail where model_id=#{id}")
     ModelDetail getModelDetail(int id);
+    @Select("select * from model ")
+    List<Model> getModelCount();
+
+    @Select("select * from log where model_id=#{id} order by model_use_date asc")
+    List<Log> getlog(int id);
 }

@@ -5,6 +5,7 @@ public class Model {
     private String model_name;
     private String model_desc;
     private int model_status;
+    private int model_use_count;
 
     public int getModel_id() {
         return model_id;
@@ -38,6 +39,14 @@ public class Model {
         this.model_status = model_status;
     }
 
+    public int getModel_use_count() {
+        return model_use_count;
+    }
+
+    public void setModel_use_count(int model_use_count) {
+        this.model_use_count = model_use_count;
+    }
+
     @Override
     public String toString() {
         return "Model{" +
@@ -45,6 +54,7 @@ public class Model {
                 ", model_name='" + model_name + '\'' +
                 ", model_desc='" + model_desc + '\'' +
                 ", model_status=" + model_status +
+                ", model_use_count=" + model_use_count +
                 '}';
     }
 }

@@ -68,4 +68,17 @@ public class ModelController {
         }
         return ResultUtil.success(res);
     }
+
+    @PostMapping("/getmodelusestate")
+    public Result getModelCount(){
+        List<Model> l = new ArrayList<>();
+        l = modelServiceImpl.getModelCount();
+        System.out.println(l.size());
+        return ResultUtil.success(l);
+    }
+
+    @PostMapping("getlog")
+    public Result getlog(@RequestParam int id){
+        return ResultUtil.success(modelServiceImpl.getlog(1));
+    }
 }
