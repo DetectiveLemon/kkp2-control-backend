@@ -26,6 +26,6 @@ public interface ModelMapper {
     @Select("select * from model ")
     List<Model> getModelCount();
 
-    @Select("select * from log where model_id=#{id} order by model_use_date asc")
+    @Select("select * from log where model_id=#{id} and DATEDIFF(CURDATE(),model_use_date) < 8 order by model_use_date asc")
     List<Log> getlog(int id);
 }
