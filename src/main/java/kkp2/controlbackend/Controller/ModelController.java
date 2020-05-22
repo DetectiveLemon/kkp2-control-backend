@@ -79,6 +79,6 @@ public class ModelController {
 
     @PostMapping("getlog")
     public Result getlog(@RequestParam int id){
-        return ResultUtil.success(modelServiceImpl.getlog(1));
+        return ResultUtil.success(modelServiceImpl.getlog(id));
     }
 }
