@@ -20,4 +20,9 @@ public interface TaskMapper {
 
     @Update("update task set status = #{status} where task_id = #{task_id}")
     int updateStatus(Task task);
+
+    @Update("update task set status = 0 where task_id = #{task_id}")
+    int pause(int taskid);
+    @Select("select status from task where task_id=#{taskid}")
+    int getstatue(int taskid);
 }

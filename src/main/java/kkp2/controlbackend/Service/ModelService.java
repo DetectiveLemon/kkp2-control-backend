@@ -14,4 +14,5 @@ public interface ModelService {
     ModelDetail getModelDetail(int id);
     List<Model> getModelCount();
     List<Log> getlog(int id);
+    int addlog(int taskid,int num);
 }

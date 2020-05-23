@@ -41,4 +41,11 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public List<Log> getlog(int id) { return modelMapper.getlog(id); }
+
+    @Override
+    public int addlog(int taskid, int num) {
+        int modelid = modelMapper.getModelId(taskid);
+        String modelname = modelMapper.getModelName(modelid);
+        return modelMapper.addLog(modelid,modelname,num);
+    }
 }

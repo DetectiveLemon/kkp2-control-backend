@@ -13,6 +13,8 @@ import java.util.Random;
 public class TaskService {
     @Autowired
     TaskMapper taskMapper;
+    @Autowired
+    ModelServiceImpl modelService;
 
     private int size = 10;
     private List<Task> runningTasks;
@@ -60,7 +62,8 @@ public class TaskService {
             taskMapper.updateCurrent(task);
             taskMapper.updateStatus(task);
             refresh();
-
+            //添加log
+            modelService.addlog(task.getTask_id(),size);
             return r;
         }catch (Exception e){
             e.printStackTrace();
@@ -71,6 +74,11 @@ public class TaskService {
     public void refresh(){
         runningTasks = taskMapper.getRunningTask();
         allTasks = taskMapper.getAllTask();
+    }
+
+    public int pause(int taskid){
+        if(taskMapper.getstatue(taskid)!=1) return -1;
+        return taskMapper.pause(taskid);
     }
 
 }
