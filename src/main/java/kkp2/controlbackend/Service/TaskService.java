@@ -22,7 +22,7 @@ public class TaskService {
     private Random random = new Random();
 
     public List<Task> getAllTasks(){
-        return allTasks;
+        return taskMapper.getAllTask();
     }
 
     public Calc getCalcTask(){
