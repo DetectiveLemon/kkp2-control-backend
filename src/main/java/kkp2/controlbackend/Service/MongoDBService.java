@@ -8,6 +8,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import kkp2.controlbackend.Bean.DBStatus;
 import org.bson.Document;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -20,8 +22,10 @@ import java.util.Random;
 @Service
 public class MongoDBService {
 
-    private static MongoClient mgc = MongoClients.create("mongodb://detectivelemon.com:27017");
-    private static MongoDatabase mgdb = mgc.getDatabase("kkp2");
+    @Autowired
+    private MongoTemplate mongoTemplate;
+//    private static MongoClient mgc = MongoClients.create("mongodb://detectivelemon.com:27017");
+//    private static MongoDatabase mgdb = mgc.getDatabase("kkp2");
 
 //    public static final String pub = "2187435847,420787754";
 //    public static final String pri = "364556556,1188588638";
@@ -31,7 +35,8 @@ public class MongoDBService {
         DBStatus r = new DBStatus();
         Document doc = new Document();
         doc.append("serverStatus", 1);
-        Document runCommand = mgdb.runCommand(doc);
+//        Document runCommand = mgdb.runCommand(doc);
+        Document runCommand = mongoTemplate.executeCommand(doc);
         r.setHost(runCommand.getString("host"));
         r.setVersion(runCommand.getString("version"));
         r.setUptime(runCommand.getDouble("uptime"));
