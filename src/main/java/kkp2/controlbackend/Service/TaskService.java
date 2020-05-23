@@ -24,7 +24,9 @@ public class TaskService {
     public List<Task> getAllTasks(){
         return taskMapper.getAllTask();
     }
-
+    public List<Task> getRunningTasks(){
+        return taskMapper.getRunningTask();
+    }
     public Calc getCalcTask(){
         Calc r ;
         try {

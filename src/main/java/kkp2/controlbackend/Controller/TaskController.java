@@ -26,6 +26,18 @@ public class TaskController {
         }
 
     }
+    @PostMapping(value = "/getrunning")
+    public Result getRunningTask(){
+        try {
+            return ResultUtil.success(taskService.getRunningTasks());
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultUtil.error(-1, e.getMessage());
+        }
+
+    }
+
+
 
     @PostMapping(value = "/getcalc")
     public Result getTask(){
