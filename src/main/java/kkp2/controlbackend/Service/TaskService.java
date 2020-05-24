@@ -79,8 +79,9 @@ public class TaskService {
     }
 
     public int pause(int taskid){
-        if(taskMapper.getstatue(taskid)!=1) return -1;
-        return taskMapper.pause(taskid);
+        if(taskMapper.getstatue(taskid) == 1) return taskMapper.pause(taskid);
+        else if(taskMapper.getstatue(taskid) == 0) return taskMapper.start(taskid);
+        else return -1;
     }
 
 }

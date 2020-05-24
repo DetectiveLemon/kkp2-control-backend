@@ -57,7 +57,7 @@ public class TaskController {
     public Result pause(@RequestParam int taskid){
         try {
             int code = taskService.pause(taskid);
-            if(code == -1) return ResultUtil.error(500,"任务不在进行中");
+            if(code == -1) return ResultUtil.error(500,"任务已完成");
             return ResultUtil.success(code);
         }catch (Exception e){
             e.printStackTrace();
