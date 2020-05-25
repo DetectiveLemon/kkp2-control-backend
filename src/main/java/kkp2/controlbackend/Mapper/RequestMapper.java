@@ -31,7 +31,7 @@ public interface RequestMapper {
     int usercancel(int request_id);
 
     @Insert("insert into task(request_id,model_id,status,current,total,mongo_url,database_name,source_collection,result_collection)" +
-            " values(#{request_id},#{model_id},0,0,#{total},'mongodb://127.0.0.1:27017','test','raw_data','out_data')")
+            " values(#{request_id},#{model_id},0,0,#{total},'mongodb://detectivelemon.com:27017','kkp2','raw_data','out_data')")
     int inserttask(int request_id,int model_id,int total);
 
     @Select("select * from request")
