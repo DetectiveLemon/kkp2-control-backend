@@ -1,5 +1,7 @@
 package kkp2.controlbackend.Bean;
 
+import java.util.Date;
+
 public class Task {
     private int task_id;
     private String task_name;
@@ -12,11 +14,13 @@ public class Task {
     private String database_name;
     private String source_collection;
     private String result_collection;
+    private String request_company;
+    private Date request_time;
 
     public Task() {
     }
 
-    public Task(int task_id, String task_name, String task_desc, int model_id, int status, int current, int total, String mongo_url, String database_name, String source_collection, String result_collection) {
+    public Task(int task_id, String task_name, String task_desc, int model_id, int status, int current, int total, String mongo_url, String database_name, String source_collection, String result_collection, String request_company, Date request_time) {
         this.task_id = task_id;
         this.task_name = task_name;
         this.task_desc = task_desc;
@@ -28,6 +32,8 @@ public class Task {
         this.database_name = database_name;
         this.source_collection = source_collection;
         this.result_collection = result_collection;
+        this.request_company = request_company;
+        this.request_time = request_time;
     }
 
     public int getTask_id() {
@@ -118,6 +124,22 @@ public class Task {
         this.result_collection = result_collection;
     }
 
+    public String getRequest_company() {
+        return request_company;
+    }
+
+    public void setRequest_company(String request_company) {
+        this.request_company = request_company;
+    }
+
+    public Date getRequest_time() {
+        return request_time;
+    }
+
+    public void setRequest_time(Date request_time) {
+        this.request_time = request_time;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
@@ -132,6 +154,8 @@ public class Task {
                 ", database_name='" + database_name + '\'' +
                 ", source_collection='" + source_collection + '\'' +
                 ", result_collection='" + result_collection + '\'' +
+                ", request_company='" + request_company + '\'' +
+                ", request_time=" + request_time +
                 '}';
     }
 }

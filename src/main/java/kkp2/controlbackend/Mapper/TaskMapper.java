@@ -9,10 +9,10 @@ import java.util.List;
 
 @Mapper
 public interface TaskMapper {
-    @Select("select * from task")
+    @Select("select task.*,request_company,request_time from task,request where task.request_id = request.request_id")
     List<Task> getAllTask();
 
-    @Select("select * from task where status = 1")
+    @Select("select task.*,request_company,request_time from task,request where task.request_id = request.request_id and task.status = 1")
     List<Task> getRunningTask();
 
     @Update("update task set current = #{current} where task_id = #{task_id}")
