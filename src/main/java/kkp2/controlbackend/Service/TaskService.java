@@ -16,7 +16,7 @@ public class TaskService {
     @Autowired
     ModelServiceImpl modelService;
 
-    private int size = 10;
+    private int size = 80;
     private List<Task> runningTasks;
     private List<Task> allTasks;
     private Random random = new Random();

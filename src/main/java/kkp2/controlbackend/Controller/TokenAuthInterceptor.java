@@ -33,7 +33,7 @@ public class TokenAuthInterceptor implements HandlerInterceptor {
             return true;
         }
         //跳转登录页面
-        response.sendRedirect("https://www.baidu.com");
+        response.sendRedirect("/login");
         return false;
     }
 }
